@@ -2,6 +2,13 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
+  var chars;
+  var specialChars = false;
+  var numChars = false;
+  var lowChars = false;
+  var upChars = false;
+  var generatedPassword = '';
+  
   lowerCaseChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   upperCaseChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -20,7 +27,17 @@ function generatePassword() {
   }
 
   function charTypes() {
+    specialChars = window.confirm("Click OK to include special characters.");
+    numChars = window.confirm("Click OK to include numeric characters.");
+    lowChars = window.confirm("Click OK to include lowercase characters.");
+    upChars = window.confirm("Click OK to include uppercase characters.");
 
+    if (!specialChars && !numChars && !lowChars && !upChars) {
+      window.alert("Please select at least one character type.")
+      charTypes();
+    } else {
+      generate();
+    }
   }
 
 }
