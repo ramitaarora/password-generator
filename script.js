@@ -40,6 +40,33 @@ function generatePassword() {
     }
   }
 
+  function generate() {
+    var passwordCriteria = [];
+    if (specialChars) {
+      passwordCriteria = passwordCriteria.concat(specialCharacters);
+    }
+    if (numChars) {
+      passwordCriteria = passwordCriteria.concat(numbers);
+    }
+    if (lowChars) {
+      passwordCriteria = passwordCriteria.concat(lowerCaseChars);
+    }
+
+    if (upChars) {
+      passwordCriteria = passwordCriteria.concat(upperCaseChars);
+    }
+
+    for (var i = 0; i < chars; i++) {
+      generatedPassword += passwordCriteria[Math.floor(Math.random() * (passwordCriteria.length-1))];
+    }
+  }
+
+  numOfChars();
+
+  if (generatedPassword) {
+    return generatedPassword;
+  }
+
 }
 
 // Write password to the #password input
